@@ -1,0 +1,40 @@
+//
+//  lowPass.c
+//  ECG
+//
+//  Created by Cebrail Erdogan on 11/09/13.
+//  Copyright (c) 2013 Cebrail Erdogan. All rights reserved.
+//
+
+#include <stdlib.h>
+#include "sensor.h"
+#include <stdio.h>
+
+int LPYn[2];
+int LPXn[12];
+int x, y;
+
+int lowPass(){
+    
+    x = getNextData();
+
+    int y = ( x - 2 * LPXn[5] + LPXn[11])/32  + 2 * LPYn[0] - LPYn[1];
+    LPYn[1] = LPYn[0];
+    LPYn[0] = y;
+   
+    /* Xn */
+    LPXn[11] = LPXn[10];
+    LPXn[10] = LPXn[9];
+    LPXn[9] = LPXn[8];
+    LPXn[8] = LPXn[7];
+    LPXn[7] = LPXn[6];
+    LPXn[6] = LPXn[5];
+    LPXn[5] = LPXn[4];
+    LPXn[4] = LPXn[3];
+    LPXn[3] = LPXn[2];
+    LPXn[2] = LPXn[1];
+    LPXn[1] = LPXn[0];
+    LPXn[0] = x;
+    
+    return y;
+}
