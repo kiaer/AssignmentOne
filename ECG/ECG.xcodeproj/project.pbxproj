@@ -32,10 +32,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E0A1FD717F31683003B25C5 /* sensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sensor.h; sourceTree = "<group>"; };
 		DC0DA65617E07DDC0085DACD /* ECG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ECG; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0DA65B17E07DDC0085DACD /* ECG.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ECG.1; sourceTree = "<group>"; };
 		DC0DA66217E07DE90085DACD /* ECG.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ECG.txt; sourceTree = "<group>"; };
-		DC0DA66517E07E8F0085DACD /* sensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sensor.h; path = ../sensor.h; sourceTree = "<group>"; };
 		DC0DA66617E07E9E0085DACD /* sensor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sensor.c; sourceTree = "<group>"; };
 		DC0DA66917E0857A0085DACD /* ECGIndex.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ECGIndex.txt; sourceTree = "<group>"; };
 		DC0DA66D17E08F290085DACD /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 				DC79999E17E47296008C313A /* highPass.h */,
 				DC79999717E46EEF008C313A /* lowPass.h */,
 				DC0DA66917E0857A0085DACD /* ECGIndex.txt */,
-				DC0DA66517E07E8F0085DACD /* sensor.h */,
+				4E0A1FD717F31683003B25C5 /* sensor.h */,
 				DC0DA66617E07E9E0085DACD /* sensor.c */,
 				DC0DA66217E07DE90085DACD /* ECG.txt */,
 				DC0DA65B17E07DDC0085DACD /* ECG.1 */,

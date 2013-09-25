@@ -13,7 +13,6 @@
     int peaksXn[3];
     int RR_PEAKS[8];
     int RR_PEAKS_HIGH[8];
-    int RR_PEAKS[8];
     int peaksX;
     int SPKF;
     int NPKF;
@@ -25,9 +24,9 @@
     int RR_HIGH;
     int RR_MISS;
     int RR_INTERVAL;
-    int Interval;
+    int Interval[8];
     int IntervalCounter;
-
+    int RpeakCNTR;
 
 /* define
  [0] = Xn+1
@@ -40,12 +39,16 @@ int searchPeaks(){
     peaksX = motionWI();
     IntervalCounter++;
     
-   
+    THRESHOLD1 = NPKF + 0.25*(SPKF-NPKF);
+    
     if (THRESHOLD1 < peaksX) {
         
-        CalcRR
+        CalcRR(Time_RR_PEAKS[0](time)-RR_PEAKS[1](time))
         
         if (RR_low<RR<RR_high){
+            INTERVAL[1]=IntervalCounter;
+            IntervalCounter=0;
+            RpeakCNTR++;
             Store peak as Rpeak
             SPKF=0.125+0.875*NPKF
             Store RR in recentRR_OK
@@ -101,6 +104,14 @@ int searchPeaks(){
     peaksXn[2] = peaksXn[1];
     peaksXn[1]= peaksXn[0];
     peaksXn[0]= peaksX;
+    
+    Interval[7]=Interval[6];
+    Interval[6]=Interval[5];
+    Interval[5]=Interval[4];
+    Interval[4]=Interval[3];
+    Interval[3]=Interval[2];
+    Interval[2]=Interval[1];
+    Interval[1]=Interval[0];
 
     
     return RR_INTERVAL;
