@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  30 SEP 2013 18:15
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  30 SEP 2013 21:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1164,7 +1164,7 @@ LaTeX Info: Redefining \nameref on input line 116.
  [1.1
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] <qrs.pn
-g, id=96, 466.74374pt x 371.3875pt>
+g, id=108, 466.74374pt x 371.3875pt>
 File: qrs.png Graphic file (type png)
 
 <use qrs.png>
@@ -1217,44 +1217,57 @@ File: upxsyc.fd 2000/12/14 v1.0
 \openout5 = `Rapport.toc'.
 
  [2.3]
-[3.4] [4.5] [5.6]
-LaTeX Font Info:    Try loading font information for T1+pxtt on input line 200.
+[3.4] <fisse.jpg, id=153, 668.4975pt x 652.4375pt>
+File: fisse.jpg Graphic file (type jpg)
+ <use fisse.jpg>
+Package pdftex.def Info: fisse.jpg used on input line 180.
+(pdftex.def)             Requested size: 334.24792pt x 326.21794pt.
+ [4.5]
+[5.6 <./fisse.jpg>] [6.7] <CPUperformance.jpg, id=174, 789.95125pt x 369.38pt>
+File: CPUperformance.jpg Graphic file (type jpg)
+
+<use CPUperformance.jpg>
+Package pdftex.def Info: CPUperformance.jpg used on input line 227.
+(pdftex.def)             Requested size: 473.9744pt x 221.6297pt.
+ [7.8] [8.9 <./CPUperformance.jpg>]
+LaTeX Font Info:    Try loading font information for T1+pxtt on input line 237.
 
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/pxfonts/t1pxtt.fd
 File: t1pxtt.fd 2000/12/14 v1.0
-) [6.7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 232.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 232.
+) [9.10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 269.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 269.
 
 (./Rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 232.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 232.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 269.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 269.
 Package rerunfilecheck Info: File `Rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 89091EE501E2BC59B0AB5557EACE18FD;1220.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 232.
+(rerunfilecheck)             Checksum: A46A7EC60CE5C2ED766BFE09D95770E0;1432.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 269.
  ) 
 Here is how much of TeX's memory you used:
- 18605 strings out of 493488
- 319077 string characters out of 3141326
- 394878 words of memory out of 3000000
- 21430 multiletter control sequences out of 15000+200000
+ 18631 strings out of 493488
+ 319515 string characters out of 3141326
+ 395878 words of memory out of 3000000
+ 21445 multiletter control sequences out of 15000+200000
  45803 words of font info for 99 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  63i,11n,74p,777b,382s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/pxfonts/pxsy.pfb></usr/local/texlive/
 2012/texmf-dist/fonts/type1/public/pxfonts/rpxbsc.pfb></usr/local/texlive/2012/
-texmf-dist/fonts/type1/public/pxfonts/rpxr.pfb></usr/local/texlive/2012/texmf-d
-ist/fonts/type1/public/pxfonts/rpxsc.pfb></usr/local/texlive/2012/texmf-dist/fo
-nts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2012/texmf-dist/fonts/ty
-pe1/urw/palatino/uplb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw
-/palatino/uplr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/palati
-no/uplri8a.pfb>
-Output written on Rapport.pdf (7 pages, 126276 bytes).
+texmf-dist/fonts/type1/public/pxfonts/rpxmi.pfb></usr/local/texlive/2012/texmf-
+dist/fonts/type1/public/pxfonts/rpxr.pfb></usr/local/texlive/2012/texmf-dist/fo
+nts/type1/public/pxfonts/rpxsc.pfb></usr/local/texlive/2012/texmf-dist/fonts/ty
+pe1/public/txfonts/t1xtt.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/ur
+w/palatino/uplb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/palat
+ino/uplr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/palatino/upl
+ri8a.pfb>
+Output written on Rapport.pdf (10 pages, 275491 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
- 173 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 178 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 235 PDF objects out of 1000 (max. 8388607)
+ 208 compressed objects within 3 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 212 words of extra memory for PDF output out of 10000 (max. 10000000)
 

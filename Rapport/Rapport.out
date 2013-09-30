@@ -11,10 +11,13 @@
 \BOOKMARK [1][-]{section.3}{Implementering}{}% 11
 \BOOKMARK [2][-]{subsection.3.1}{Filtre}{section.3}% 12
 \BOOKMARK [3][-]{subsubsection.3.1.1}{Low-Pass, High-pass, Derivative og Moving window implementation}{subsection.3.1}% 13
-\BOOKMARK [3][-]{subsubsection.3.1.2}{Squared}{subsection.3.1}% 14
-\BOOKMARK [1][-]{section.4}{Resultater}{}% 15
-\BOOKMARK [1][-]{section.5}{Diskussion}{}% 16
-\BOOKMARK [1][-]{section.6}{Konklusion}{}% 17
-\BOOKMARK [1][-]{section.7}{Bilag}{}% 18
-\BOOKMARK [2][-]{subsection.7.1}{HelloWorld.c}{section.7}% 19
-\BOOKMARK [2][-]{subsection.7.2}{ReadFile.c}{section.7}% 20
+\BOOKMARK [2][-]{subsection.3.2}{QRS Detection algorithm}{section.3}% 14
+\BOOKMARK [3][-]{subsubsection.3.2.1}{peaks}{subsection.3.2}% 15
+\BOOKMARK [3][-]{subsubsection.3.2.2}{RR intervallet}{subsection.3.2}% 16
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Squared}{subsection.3.2}% 17
+\BOOKMARK [1][-]{section.4}{Resultater}{}% 18
+\BOOKMARK [1][-]{section.5}{Diskussion}{}% 19
+\BOOKMARK [1][-]{section.6}{Konklusion}{}% 20
+\BOOKMARK [1][-]{section.7}{Bilag}{}% 21
+\BOOKMARK [2][-]{subsection.7.1}{HelloWorld.c}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.2}{ReadFile.c}{section.7}% 23

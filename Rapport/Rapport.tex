@@ -166,13 +166,22 @@ Da algoritmen kræver at datapunkterne behandles med stor præcision, anvendes 5
 \item Squaring
 \item Moving window integration
 \end{itemize}
+\newpage
+
 \subsection{Varierende del??}
 \subsection{Bruger output??}
 \section{Programdesign}
 \subsection*{Struktur}
 Vi har taget udgangspunkt i de udleverede program filer til senoren, og efterfølgende oprettet klasser for alle filtre og QRS-registrings delene af programmet. Vi har en main klasse der kører selve programmet, og derfra kalder de nødvændige funktioner.\\
 Filtrene er oprettet med navn, og funktionerne i det pågældende filter bliver derfra kaldt (eks. er low-pass filteret oprettet som lowPass.c). R-peak registrering forgår i QRS.c, hvorfra også udregningerne af intensiteten, varigheden og tiden siden sidste R-peak foregår.\\
-Opdelingen er sket på denne måde, da vi synes en klasse for hver filter gav mest overskuelighed. Det er meget let derfra at gå ind og rette på en enkelt del af et givent filter, uden det giver problemer i resten af programmet. At holde QRS funktionerne adskildt fra resten af programmet giver samme fordele. 
+Opdelingen er sket på denne måde, da vi synes en klasse for hver filter gav mest overskuelighed. Det er meget let derfra at gå ind og rette på en enkelt del af et givent filter, uden det giver problemer i resten af programmet. At holde QRS funktionerne adskildt fra resten af programmet giver samme fordele. Nedenfor ses et klassediagram for vores program.
+\begin{figure}[htpb]
+\centering
+\includegraphics[scale=0.5]{fisse.jpg}
+\caption{Klassediagram}
+\label{Figur 2. Klassediagram}
+\end{figure}
+\newpage
 \subsection{Data indlæsning}
 Da programmet skal forestille at være en simulation af en ECG måling, ved brug af Pan-Thompsons QRS detection algorithm, skal programmet kunne læse data fra en fil. Til dette har vi vidreudviklet på sensor.c filen, og implenteret funktionen getNextData(). Dette vil give os muligheden for at hente data fra en fil, og bruge dette datasæt til analyse af QRS detection algoritmen. Sensor.c bruges derefter i main.c og henter alle vores signal data ind til analysen.
 \subsection{Data analyse}
@@ -185,14 +194,42 @@ De forskellige filtre er belvet implementeret i hver sin klasse. Her er en genne
 \subsubsection{Low-Pass, High-pass, Derivative og Moving window implementation}
 Her initializeres 2 arrays en til resultaterne og en til dataen. Størrelsen af arrayet afhænger af hvor langt tilbage formlen siger vi skal have resultater fra. Fx. skal vi have $x_{n-12}$ i Low-Pass filtret, vi skal altså have et array der gemmer x værdierne til og med $x_{n-12}$. Det bliver gjort med en forløkke som sætter den positon næste lig den forrige.
 Hvorefter vi så returner resultatet. Derudover har vi også tilføjet en reset metode hvis man skal bruge filtrene igen. Den sætter bare alle positionerne i arraysne til nul.
+\subsection{QRS Detection algorithm}
+
+
+QRS algoritmen er uden tvivl den vigtigste komponent i hele systemet. Den har til formål at finde ”peaks” – altså toppe – og behandle de fundne peaks. Algoritmen gør det muligt at fortolke frekvenserne. Nogle af de fundne peaks vil blive fortolket som hjertepuls (Rpeaks), mens nogle af dem fortolkes som støj. Hvis intervallet mellem Rpeaks er usædvanligt vil programmet kommet med output - advarelser. De essentielle dele af algoritmen bliver uddybet nedenfor.
+\subsubsection{peaks}
+Peaks er simple at finde. Der hentes data fra filteret. De hentes en ad gangen, men man kunne også hente tre ad gangen. Grunden til at der skal bruges tre ”datapoint” skyldes betingelsen:
+$Xn-1 < xn, xn > xn+1$  ,  
+Gemme peaks
+Peaks er defineret som ”struct”. Struct gør det muligt at oprette et object og give den forskellige variabler. Så alle vores peaks har variablerne ”value”,”RR” og ”index”.
+Nu er peak en type som kan tildeles. De fundne peaks gemmes i et array med typen peak. 
+
+\subsubsection{RR intervallet}
+
+Intervallet af Rpeaks afgøre patientens tilstand, derfor er det også dem der bruges til at de forskellige udsagn i algoritmen. Vi beregner intervallet ved at sige:
+Datapoint\_index  - index of last $Rpeak = interval$
+Hvis RR intervallet ligger mellem RR\_LOW og RR\_HEIGHT er der intet galt, men hvis dette viser sig ikke at være tilfældet i 5 gange i træk, vil programmet komme med en advarsel. De seneste RR intervaller gemmes i en array med størrelsen 8, de fundne bruges til at finde gennemsnittet.
+
+Søg baglæns for peaks
+Når intervallet ikke er mellem RR\_LOW og RR\_HEIGHT vil den blive tjekket om den er større end RR\_MISS, hvis det er tilfældet vil den starte proceduren ”searchback”. 
+I ”searchback” gennemsøger vi baglæns gennem alle de fundne ”peaks” indtil videre.
+Lige så snart vi har en peak som er større end THRESHOLD2 fortsætter vi til algoritmens sidste step. Hver gang der betingelsen ikke er opfyldt går vi en skridt tilbage i arrayet.
+ 
 
 \subsubsection{Squared}
 Squared filtret ligger også i sin egen klasse. her får den input fra Derivative og returner inputtet ganget sig selv.
 
 \section{Resultater}
-
+Resultaterne er som ventet når "patienten" har problemer med hjertet får vi en advarsel og vi finder alle andre Rpeaks. Derudover kan vores program køre den store liste ECG10800K på 2.4sec, og vi har fået en average run time på ?????(HURTIG).
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.6]{CPUperformance.jpg}
+\caption{CPU performance chart ved brug af ECG10800K.txt}
+\label{CPU performance chart ved brug af ECG10800K.txt}
+\end{figure}
 \section{Diskussion}
-
+Vi som gruppe havde alle lavet en forskellig version af programmet og så senere merget det og fået et program som virker som det skal. Vi var i tvivl hvordan vi skulle håndtere alle de forskellige variabler der ville komme og havde rigtigt mange store arrays sat op, vi fant dog ud af at bruge structs for at have noget der minder objekter.
 \section{Konklusion}
 \newpage
 \section{Bilag}
