@@ -10,5 +10,6 @@
 #define ECG_motionWI_h
 
 int motionWI();
+int resetMotionWindow();
 
 #endif

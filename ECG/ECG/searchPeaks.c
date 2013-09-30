@@ -13,7 +13,6 @@
     int peaksXn[3];
     int RR_PEAKS[8];
     int RR_PEAKS_HIGH[8];
-    int RR_PEAKS[8];
     int peaksX;
     int SPKF;
     int NPKF;
@@ -25,9 +24,9 @@
     int RR_HIGH;
     int RR_MISS;
     int RR_INTERVAL;
-    int Interval;
+    int Interval[8];
     int IntervalCounter;
-
+    int RpeakCNTR;
 
 /* define
  [0] = Xn+1
@@ -40,19 +39,56 @@ int searchPeaks(){
     peaksX = motionWI();
     IntervalCounter++;
     
-   
-    THRESHOLD1 =  NPKF + 0.25 * (SPKF - NPKF);
-    
+    THRESHOLD1 = NPKF + 0.25*(SPKF-NPKF);
     
     if (THRESHOLD1 < peaksX) {
         
+        CalcRR(Time_RR_PEAKS[0](time)-RR_PEAKS[1](time))
         
-        
+        if (RR_low<RR<RR_high){
+            INTERVAL[1]=IntervalCounter;
+            IntervalCounter=0;
+            RpeakCNTR++;
+            Store peak as Rpeak
+            SPKF=0.125+0.875*NPKF
+            Store RR in recentRR_OK
+            Store RR in recentRR
+            RR_AVARAGE2 = avg of RecentRR_OK
+            RR_AVARAGE1 = avg of RecentRR
+            RR_LOW = 0.9*RR_AVARAGE2
+            RR_HIGH = 1.16*RR_AVARAGE2
+            RR_MISS = 1.66*RR_AVARAGE2
+            THRESHOLD1 = NPKF + 0.25*(SPKF-NPKF)
+            THRESHOLD2 = 0.5*THRESHOLD1
+        }
+        else{
+        while (1) {
+   
+            if (RR>RR_MISS) {
+                SearchBackwards through PEAKS and return peak2
+                if (peaks2>THRESHOLD2) {
+                    break
+                }
+            }
+        }
+        Store peak as Rpeak
+        SPKF = 0.25*peak+0.75*SPKF
+        STORE RR in RecentRR
+        RR_AVARAGE1 = avg of RecentRR
+        RR_LOW = 0.9*RR_AVARAGE2
+        RR_HIGH = 1.16*RR_AVARAGE2
+        RR_MISS = 1.66*RR_AVARAGE2
+        THRESHOLD1 = NPKF + 0.25*(SPKF-NPKF)
+        THRESHOLD2 = 0.5*THRESHOLD1
         
         
     }
-    SPKF = 0.125 * peaksX + 0.875 * SPKF;
+    
     NPKF = 0.125 * peaksX + 0.875 * NPKF;
+    THRESHOLD1 = NPKF + 0.25*(SPKF-NPKF);
+    THRESHOLD2 = 0.5*THRESHOLD1;
+    }
+    
     
 //    Peaks counter
     if ( peaksXn[2] < peaksXn[1] && peaksXn[1] > peaksXn[0]){
@@ -68,6 +104,14 @@ int searchPeaks(){
     peaksXn[2] = peaksXn[1];
     peaksXn[1]= peaksXn[0];
     peaksXn[0]= peaksX;
+    
+    Interval[7]=Interval[6];
+    Interval[6]=Interval[5];
+    Interval[5]=Interval[4];
+    Interval[4]=Interval[3];
+    Interval[3]=Interval[2];
+    Interval[2]=Interval[1];
+    Interval[1]=Interval[0];
 
     
     return RR_INTERVAL;

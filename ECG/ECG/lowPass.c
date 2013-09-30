@@ -38,3 +38,14 @@ int lowPass(){
     
     return y;
 }
+
+void resetLowPass(){
+    for (int i = 0; i < sizeof(LPXn); i++) {
+        LPXn[i] = 0;
+    }
+    LPYn[1] = 0;
+    LPYn[0] = 0;
+    x = 0; y = 0;
+
+}
+

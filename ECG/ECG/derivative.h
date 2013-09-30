@@ -10,5 +10,6 @@
 #define ECG_derivative_h
 
 int derivative();
+void resetDerivative();
 
 #endif

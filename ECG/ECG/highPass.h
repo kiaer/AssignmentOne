@@ -10,6 +10,6 @@
 #define ECG_highPass_h
 
 int highPass();
-
+void resetHighPass();
 
 #endif

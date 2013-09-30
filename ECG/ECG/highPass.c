@@ -60,8 +60,15 @@ int highPass(){
     Xn[2] = Xn[1];
     Xn[1] = Xn[0];
     Xn[0] = dataPoint;
-
- 
     
     return y;
 }
+
+void resetHighPass(){
+    for (int i = 0; i < sizeof(Xn); i++) {
+        Xn[i] = 0;
+    }
+    dataPoint= 0;
+    Yn_1 = 0;
+}
+

@@ -17,3 +17,7 @@ int squared()
     root = derivative();
     return root * root;
 }
+
+void resetSquared(){
+    root = 0;
+}
