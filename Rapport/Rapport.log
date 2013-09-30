@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  30 SEP 2013 21:49
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  30 SEP 2013 23:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1164,7 +1164,7 @@ LaTeX Info: Redefining \nameref on input line 116.
  [1.1
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] <qrs.pn
-g, id=108, 466.74374pt x 371.3875pt>
+g, id=104, 466.74374pt x 371.3875pt>
 File: qrs.png Graphic file (type png)
 
 <use qrs.png>
@@ -1217,43 +1217,83 @@ File: upxsyc.fd 2000/12/14 v1.0
 \openout5 = `Rapport.toc'.
 
  [2.3]
-[3.4] <fisse.jpg, id=153, 668.4975pt x 652.4375pt>
+[3.4] <output.jpg, id=148, 379.4175pt x 268.00125pt>
+File: output.jpg Graphic file (type jpg)
+ <use output.jpg>
+Package pdftex.def Info: output.jpg used on input line 185.
+(pdftex.def)             Requested size: 265.59042pt x 187.59958pt.
+
+<fisse.jpg, id=149, 668.4975pt x 652.4375pt>
 File: fisse.jpg Graphic file (type jpg)
  <use fisse.jpg>
-Package pdftex.def Info: fisse.jpg used on input line 180.
-(pdftex.def)             Requested size: 334.24792pt x 326.21794pt.
- [4.5]
-[5.6 <./fisse.jpg>] [6.7] <CPUperformance.jpg, id=174, 789.95125pt x 369.38pt>
+Package pdftex.def Info: fisse.jpg used on input line 196.
+(pdftex.def)             Requested size: 267.39426pt x 260.97037pt.
+ [4.5 <./output.jpg>] [5.6 <./fisse.jpg>] [6.7] [7.8]
+<CPUperformance.jpg, id=176, 789.95125pt x 369.38pt>
 File: CPUperformance.jpg Graphic file (type jpg)
-
-<use CPUperformance.jpg>
-Package pdftex.def Info: CPUperformance.jpg used on input line 227.
+ <use CPUperformance.jpg>
+Package pdftex.def Info: CPUperformance.jpg used on input line 244.
 (pdftex.def)             Requested size: 473.9744pt x 221.6297pt.
- [7.8] [8.9 <./CPUperformance.jpg>]
-LaTeX Font Info:    Try loading font information for T1+pxtt on input line 237.
+
+[8.9 <./CPUperformance.jpg>] [9.10]
+Underfull \hbox (badness 10000) in paragraph at lines 268--271
+
+ []
+
+[10.11]
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
+
+ []
 
 
-(/usr/local/texlive/2012/texmf-dist/tex/latex/pxfonts/t1pxtt.fd
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 281--283
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+
+ []
+
+[11.12]
+LaTeX Font Info:    Try loading font information for T1+pxtt on input line 288.
+
+ (/usr/local/texlive/2012/texmf-dist/tex/latex/pxfonts/t1pxtt.fd
 File: t1pxtt.fd 2000/12/14 v1.0
-) [9.10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 269.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 269.
-
-(./Rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 269.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 269.
+)
+[12.13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 320.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 320.
+ (./Rapport.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 320.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 320.
 Package rerunfilecheck Info: File `Rapport.out' has not changed.
-(rerunfilecheck)             Checksum: A46A7EC60CE5C2ED766BFE09D95770E0;1432.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 269.
+(rerunfilecheck)             Checksum: 84E229406DBEEEA16B95368670D76E47;1412.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 320.
  ) 
 Here is how much of TeX's memory you used:
- 18631 strings out of 493488
- 319515 string characters out of 3141326
- 395878 words of memory out of 3000000
- 21445 multiletter control sequences out of 15000+200000
- 45803 words of font info for 99 fonts, out of 3000000 for 9000
+ 18639 strings out of 493488
+ 319626 string characters out of 3141326
+ 394878 words of memory out of 3000000
+ 21450 multiletter control sequences out of 15000+200000
+ 46742 words of font info for 100 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 63i,11n,74p,777b,382s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,12n,74p,777b,382s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/pxfonts/pxsy.pfb></usr/local/texlive/
 2012/texmf-dist/fonts/type1/public/pxfonts/rpxbsc.pfb></usr/local/texlive/2012/
@@ -1264,10 +1304,10 @@ pe1/public/txfonts/t1xtt.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/ur
 w/palatino/uplb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/palat
 ino/uplr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/palatino/upl
 ri8a.pfb>
-Output written on Rapport.pdf (10 pages, 275491 bytes).
+Output written on Rapport.pdf (13 pages, 295107 bytes).
 PDF statistics:
- 235 PDF objects out of 1000 (max. 8388607)
- 208 compressed objects within 3 object streams
- 39 named destinations out of 1000 (max. 500000)
- 212 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 248 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 209 words of extra memory for PDF output out of 10000 (max. 10000000)
 

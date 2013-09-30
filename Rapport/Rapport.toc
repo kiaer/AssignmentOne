@@ -3,22 +3,21 @@
 \contentsline {subsection}{\numberline {1.1}Funktioner}{3}{subsection.1.1}
 \contentsline {subsubsection}{\numberline {1.1.1}Data erhvervelse}{3}{subsubsection.1.1.1}
 \contentsline {subsubsection}{\numberline {1.1.2}Filtrering}{3}{subsubsection.1.1.2}
-\contentsline {subsection}{\numberline {1.2}Varierende del??}{4}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Bruger output??}{4}{subsection.1.3}
-\contentsline {section}{\numberline {2}Programdesign}{4}{section.2}
-\contentsline {subsection}{\numberline {2.1}Data indl\IeC {\ae }sning}{5}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Data analyse}{5}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Data output}{6}{subsection.2.3}
+\contentsline {subsection}{\numberline {1.2}Bruger output}{4}{subsection.1.2}
+\contentsline {section}{\numberline {2}Programdesign}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Data indl\IeC {\ae }sning}{6}{subsection.2.1}
 \contentsline {section}{\numberline {3}Implementering}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}Filtre}{6}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}Low-Pass, High-pass, Derivative og Moving window implementation}{6}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Squared}{6}{subsubsection.3.1.2}
 \contentsline {subsection}{\numberline {3.2}QRS Detection algorithm}{6}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}peaks}{6}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}RR intervallet}{7}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Squared}{7}{subsubsection.3.2.3}
-\contentsline {section}{\numberline {4}Resultater}{7}{section.4}
-\contentsline {section}{\numberline {5}Diskussion}{7}{section.5}
-\contentsline {section}{\numberline {6}Konklusion}{8}{section.6}
-\contentsline {section}{\numberline {7}Bilag}{9}{section.7}
-\contentsline {subsection}{\numberline {7.1}HelloWorld.c}{9}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}ReadFile.c}{9}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {3.2.1}peaks}{7}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Gemme peaks}{7}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Beregning af RR intervallet}{7}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}S\IeC {\o }g bagl\IeC {\ae }ns for peaks}{7}{subsubsection.3.2.4}
+\contentsline {section}{\numberline {4}Resultater}{8}{section.4}
+\contentsline {section}{\numberline {5}Diskussion}{10}{section.5}
+\contentsline {section}{\numberline {6}Konklusion}{11}{section.6}
+\contentsline {section}{\numberline {7}Bilag}{12}{section.7}
+\contentsline {subsection}{\numberline {7.1}HelloWorld.c}{12}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}ReadFile.c}{12}{subsection.7.2}

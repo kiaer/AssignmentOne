@@ -2,22 +2,21 @@
 \BOOKMARK [2][-]{subsection.1.1}{Funktioner}{section.1}% 2
 \BOOKMARK [3][-]{subsubsection.1.1.1}{Data erhvervelse}{subsection.1.1}% 3
 \BOOKMARK [3][-]{subsubsection.1.1.2}{Filtrering}{subsection.1.1}% 4
-\BOOKMARK [2][-]{subsection.1.2}{Varierende del??}{section.1}% 5
-\BOOKMARK [2][-]{subsection.1.3}{Bruger output??}{section.1}% 6
-\BOOKMARK [1][-]{section.2}{Programdesign}{}% 7
-\BOOKMARK [2][-]{subsection.2.1}{Data indl\346sning}{section.2}% 8
-\BOOKMARK [2][-]{subsection.2.2}{Data analyse}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.3}{Data output}{section.2}% 10
-\BOOKMARK [1][-]{section.3}{Implementering}{}% 11
-\BOOKMARK [2][-]{subsection.3.1}{Filtre}{section.3}% 12
-\BOOKMARK [3][-]{subsubsection.3.1.1}{Low-Pass, High-pass, Derivative og Moving window implementation}{subsection.3.1}% 13
-\BOOKMARK [2][-]{subsection.3.2}{QRS Detection algorithm}{section.3}% 14
-\BOOKMARK [3][-]{subsubsection.3.2.1}{peaks}{subsection.3.2}% 15
-\BOOKMARK [3][-]{subsubsection.3.2.2}{RR intervallet}{subsection.3.2}% 16
-\BOOKMARK [3][-]{subsubsection.3.2.3}{Squared}{subsection.3.2}% 17
-\BOOKMARK [1][-]{section.4}{Resultater}{}% 18
-\BOOKMARK [1][-]{section.5}{Diskussion}{}% 19
-\BOOKMARK [1][-]{section.6}{Konklusion}{}% 20
-\BOOKMARK [1][-]{section.7}{Bilag}{}% 21
-\BOOKMARK [2][-]{subsection.7.1}{HelloWorld.c}{section.7}% 22
-\BOOKMARK [2][-]{subsection.7.2}{ReadFile.c}{section.7}% 23
+\BOOKMARK [2][-]{subsection.1.2}{Bruger output}{section.1}% 5
+\BOOKMARK [1][-]{section.2}{Programdesign}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{Data indl\346sning}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Implementering}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Filtre}{section.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Low-Pass, High-pass, Derivative og Moving window implementation}{subsection.3.1}% 10
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Squared}{subsection.3.1}% 11
+\BOOKMARK [2][-]{subsection.3.2}{QRS Detection algorithm}{section.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.2.1}{peaks}{subsection.3.2}% 13
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Gemme peaks}{subsection.3.2}% 14
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Beregning af RR intervallet}{subsection.3.2}% 15
+\BOOKMARK [3][-]{subsubsection.3.2.4}{S\370g bagl\346ns for peaks}{subsection.3.2}% 16
+\BOOKMARK [1][-]{section.4}{Resultater}{}% 17
+\BOOKMARK [1][-]{section.5}{Diskussion}{}% 18
+\BOOKMARK [1][-]{section.6}{Konklusion}{}% 19
+\BOOKMARK [1][-]{section.7}{Bilag}{}% 20
+\BOOKMARK [2][-]{subsection.7.1}{HelloWorld.c}{section.7}% 21
+\BOOKMARK [2][-]{subsection.7.2}{ReadFile.c}{section.7}% 22

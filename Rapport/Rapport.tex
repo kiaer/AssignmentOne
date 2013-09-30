@@ -167,9 +167,25 @@ Da algoritmen kræver at datapunkterne behandles med stor præcision, anvendes 5
 \item Moving window integration
 \end{itemize}
 \newpage
-
-\subsection{Varierende del??}
-\subsection{Bruger output??}
+\subsection{Bruger output}
+Programmet vil være i stand til at informere brugeren om praktiske oplysninger. I løbet af programmets kørsel vil brugeren blive informeret både om tekniske ting og advarsler angående patienten.
+De tekniske data indeholder:
+\begin{itemize}
+\item Rpeak værdi: Værdien af nuværende Rpeak
+\item RR interval: Tiden fra sidste Rpeak til nuværende
+\item Pulse: Hjertets puls. Beregnet ved at sige:  ((250/RR\_ AVERAGE1)*60).
+\end{itemize}
+Alarmering:
+\begin{itemize}
+\item Rpeak under 2000: Skyldes for svag hjerteslag.
+\item RR intervallet er ikke mellem RR\_ LOW og RR\_ HIGH 5 gange i træk: Skyldes usædvanlig interval mellem hjerteslag.
+\end{itemize}	
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.7]{output.jpg}
+\caption{Output til brugeren}
+\label{what up}
+\end{figure}
 \section{Programdesign}
 \subsection*{Struktur}
 Vi har taget udgangspunkt i de udleverede program filer til senoren, og efterfølgende oprettet klasser for alle filtre og QRS-registrings delene af programmet. Vi har en main klasse der kører selve programmet, og derfra kalder de nødvændige funktioner.\\
@@ -177,16 +193,13 @@ Filtrene er oprettet med navn, og funktionerne i det pågældende filter bliver 
 Opdelingen er sket på denne måde, da vi synes en klasse for hver filter gav mest overskuelighed. Det er meget let derfra at gå ind og rette på en enkelt del af et givent filter, uden det giver problemer i resten af programmet. At holde QRS funktionerne adskildt fra resten af programmet giver samme fordele. Nedenfor ses et klassediagram for vores program.
 \begin{figure}[htpb]
 \centering
-\includegraphics[scale=0.5]{fisse.jpg}
+\includegraphics[scale=0.4]{fisse.jpg}
 \caption{Klassediagram}
 \label{Figur 2. Klassediagram}
 \end{figure}
 \newpage
 \subsection{Data indlæsning}
 Da programmet skal forestille at være en simulation af en ECG måling, ved brug af Pan-Thompsons QRS detection algorithm, skal programmet kunne læse data fra en fil. Til dette har vi vidreudviklet på sensor.c filen, og implenteret funktionen getNextData(). Dette vil give os muligheden for at hente data fra en fil, og bruge dette datasæt til analyse af QRS detection algoritmen. Sensor.c bruges derefter i main.c og henter alle vores signal data ind til analysen.
-\subsection{Data analyse}
-Analyseringen af data sker, når hver 
-\subsection{Data output}
 \section{Implementering}
 \subsection{Filtre}
 De forskellige filtre er belvet implementeret i hver sin klasse. Her er en gennemngang af nogle af dem da nogle af dem er meget ens hvor det eneste der gør dem forskellige er den matematiske formel.
@@ -194,6 +207,10 @@ De forskellige filtre er belvet implementeret i hver sin klasse. Her er en genne
 \subsubsection{Low-Pass, High-pass, Derivative og Moving window implementation}
 Her initializeres 2 arrays en til resultaterne og en til dataen. Størrelsen af arrayet afhænger af hvor langt tilbage formlen siger vi skal have resultater fra. Fx. skal vi have $x_{n-12}$ i Low-Pass filtret, vi skal altså have et array der gemmer x værdierne til og med $x_{n-12}$. Det bliver gjort med en forløkke som sætter den positon næste lig den forrige.
 Hvorefter vi så returner resultatet. Derudover har vi også tilføjet en reset metode hvis man skal bruge filtrene igen. Den sætter bare alle positionerne i arraysne til nul.
+
+\subsubsection{Squared}
+Squared filtret ligger også i sin egen klasse. her får den input fra Derivative og returner inputtet ganget sig selv.
+
 \subsection{QRS Detection algorithm}
 
 
@@ -201,36 +218,70 @@ QRS algoritmen er uden tvivl den vigtigste komponent i hele systemet. Den har ti
 \subsubsection{peaks}
 Peaks er simple at finde. Der hentes data fra filteret. De hentes en ad gangen, men man kunne også hente tre ad gangen. Grunden til at der skal bruges tre ”datapoint” skyldes betingelsen:
 $Xn-1 < xn, xn > xn+1$  ,  
-Gemme peaks
+\subsubsection{Gemme peaks}
 Peaks er defineret som ”struct”. Struct gør det muligt at oprette et object og give den forskellige variabler. Så alle vores peaks har variablerne ”value”,”RR” og ”index”.
 Nu er peak en type som kan tildeles. De fundne peaks gemmes i et array med typen peak. 
 
-\subsubsection{RR intervallet}
+\subsubsection{Beregning af RR intervallet}
 
 Intervallet af Rpeaks afgøre patientens tilstand, derfor er det også dem der bruges til at de forskellige udsagn i algoritmen. Vi beregner intervallet ved at sige:
 Datapoint\_index  - index of last $Rpeak = interval$
 Hvis RR intervallet ligger mellem RR\_LOW og RR\_HEIGHT er der intet galt, men hvis dette viser sig ikke at være tilfældet i 5 gange i træk, vil programmet komme med en advarsel. De seneste RR intervaller gemmes i en array med størrelsen 8, de fundne bruges til at finde gennemsnittet.
 
-Søg baglæns for peaks
+\subsubsection{Søg baglæns for peaks}
 Når intervallet ikke er mellem RR\_LOW og RR\_HEIGHT vil den blive tjekket om den er større end RR\_MISS, hvis det er tilfældet vil den starte proceduren ”searchback”. 
 I ”searchback” gennemsøger vi baglæns gennem alle de fundne ”peaks” indtil videre.
 Lige så snart vi har en peak som er større end THRESHOLD2 fortsætter vi til algoritmens sidste step. Hver gang der betingelsen ikke er opfyldt går vi en skridt tilbage i arrayet.
  
 
-\subsubsection{Squared}
-Squared filtret ligger også i sin egen klasse. her får den input fra Derivative og returner inputtet ganget sig selv.
 
+\newpage
 \section{Resultater}
-Resultaterne er som ventet når "patienten" har problemer med hjertet får vi en advarsel og vi finder alle andre Rpeaks. Derudover kan vores program køre den store liste ECG10800K på 2.4sec, og vi har fået en average run time på ?????(HURTIG).
+Resultaterne er som ventet når "patienten" har problemer med hjertet får vi en advarsel og vi finder alle andre Rpeaks.\\
+Vi har derudover lavet en performance analyse af algoritmeten. Vores test PC har været en maskine med en i7 2.2ghz quadcore processor med 45 watt strømforbrug. Maskinen kørte programmet med den store ECG10800K.txt fil. Programmet kørte med ca. 25\% af maskinens CPU kraft under udførslen. Performance chartet for kørslen af programmet kan ses nedenunder:
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.6]{CPUperformance.jpg}
 \caption{CPU performance chart ved brug af ECG10800K.txt}
 \label{CPU performance chart ved brug af ECG10800K.txt}
-\end{figure}
+\end{figure}\\
+Det vides at bærbare ECG skanner skal kunne læse 250 punkter i sekundet. Ud fra dette kan det udregnes hvor stort watt forbrug en bærbar maskine vil have, ved brug af QRS algoritmen. Vi udregner først hvor mange clockcycles processoren bruger ved kørsel på en kerne i 1.60 sekunder:
+\begin{align*}
+clockscycles\_overall = 2.2 \cdot 10^9 hz \cdot 1.60s	 = 3.52 \cdot 10^9 clockcycles
+\end{align*}
+Vi regner derefter ud hvor mange clockcycles der kører for hver linje:
+\begin{align*}
+clocks\_per\_line = \frac{3.52 \cdot 10^9}{10800000 } = 325.93 \frac{clocks}{line}
+\end{align*}
+Vi kan derefter regne ud hvor mange watt der bruges per linje på vores test pc. Da maskinen var på 25\% og har et strømforbrug på 45w, er strømforbruget under kørsel af programmet på 11.25w.
+\begin{align*}
+joules\_per\_line = \frac{325.93 \frac{clocks}{line}}{2.2 \cdot 10^9hz} = 0.00000167 \frac{j}{line}
+\end{align*}
+Da det vides at den bærbare enhed skal kunne læse 250 linjer i sekundet, kan det udregnes hvad strømforbruget vil være.
+\begin{align*}
+watt = 0.00000167\frac{j}{line} \cdot 250 = 0.00042w = 420 microwatt
+\end{align*}
+Dette gør algoritmen meget effetktiv i en bærbar enhed, pga den gode hastighed og det lave strømfobrug. Derudover kræves der ikke meget af hardwaren for at benytte algoritmen.\\
+Koden optog ca. 2.5 mb RAM mens det kørte, hvilket også stiller et forholdsvis lavt krav til hardware specifikationer. 
+\newpage
 \section{Diskussion}
-Vi som gruppe havde alle lavet en forskellig version af programmet og så senere merget det og fået et program som virker som det skal. Vi var i tvivl hvordan vi skulle håndtere alle de forskellige variabler der ville komme og havde rigtigt mange store arrays sat op, vi fant dog ud af at bruge structs for at have noget der minder objekter.
+Vi som gruppe havde alle lavet en forskellig version af programmet og så senere merget det og fået et program som virker som det skal. Vi var i tvivl hvordan vi skulle håndtere alle de forskellige variabler der ville komme og havde rigtigt mange store arrays sat op, vi fant dog ud af at bruge structs for at have noget der minder objekter.\\\\
+Hvis vi skulle finde en hardware løsning til dette kan vi se på figur 3 og se hvilke dele af programmet som kører langsommest så vi kan finde ud af hvor lidt hardware vi egentlig har brug for.Det er tydeligt i køretiderne fra processoren
+at det der bruger længst tid er indlæsningen af data. Da det er en enhed som modtager maks ca. 220 datapunkter i minuttet kan vi se bort fra det. Da programmet ikke behøver at være meget hurtigt kan vi fokusere på at gøre det så energi besparende som overhovdedet muligt. Vi kan se at det som bruger nest mest energi er motionWI metoden som er en af filtrene der bruges til at gøre datapointse mere overskuelige. Den og alle de andre filtre kunne jo eventuelt hardcodes som hardware så der skulle bruges så lidt processor kraft som overhovdet muligt men igen størrelsen er jo altafgørende.
+\newpage
 \section{Konklusion}
+Der gives et overblik over hvordan et kompliceret software bygges og hvilken undersøgelser den skal igennem for at blive betragtet som ”god software”.  Programmet blev bygget i tre faser. Første fase omhandler filtre , anden fase omhandler QRS og som sidste fase analysere vi programmet. Programmet simulere en ECG pulsmåler ved at hente data fra txt-filer. \\
+
+Filtrene består af fem komponenter som har hver deres formål, at implementere dem var simpelt, da de alle sammen består af enkelte formler. \\
+
+QRS algoritmen var derimod meget udfordrende.  De enkelte trin i algoritmen kræver omhyggelig implementering. Det er let at lave fejl når man har med en så stor algoritme at gøre. \\
+
+Analysering af programmet viste, at den ville fungere meget godt som bærbart enhed. Der blev hverken brugt meget CPU eller hukommelse, derfor er programmet godt optimeret. \\
+
+Programmet giver en god eksempel på hvordan software implementeres i den 
+virkelig verden, fordi man også tænker på hardwaredelen i baghovedet. \\
+
+De kommende opgaver kommer til at handle om hardware-simulation, hvilket vil give os forståelse for hardwaredelen. \\
 \newpage
 \section{Bilag}
 \subsection{HelloWorld.c}
