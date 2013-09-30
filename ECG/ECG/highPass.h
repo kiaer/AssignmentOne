@@ -11,5 +11,6 @@
 
 int highPass();
 void resetHighPass();
+double time_spent_hpf;
 
 #endif

@@ -10,6 +10,7 @@
 #include "derivative.h"
 #include <stdlib.h>
 
+
 int root;
 
 int squared()

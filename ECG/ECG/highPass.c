@@ -10,18 +10,18 @@
 #include "sensor.h"
 #include "lowPass.h"
 #include <stdio.h>
+#include <time.h>
+#include <unistd.h>
 
 int Xn[40];
 int Yn_1;
 int dataPoint, y;
-
-
+clock_t end, start;
+double time_spent_hpf;
 
 int highPass(){
-
     
-    
-    
+//    start = clock();
     dataPoint = lowPass();
     y =  Yn_1 - (dataPoint/32) + (Xn[15] - Xn[16]) + (Xn[31]/32);
     Yn_1 = y;
@@ -60,7 +60,8 @@ int highPass(){
     Xn[2] = Xn[1];
     Xn[1] = Xn[0];
     Xn[0] = dataPoint;
-    
+//    end = clock();
+//    time_spent_hpf += (double) (end - start) / CLOCKS_PER_SEC;
     return y;
 }
 
