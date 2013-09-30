@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "sensor.h"
 
-static const char filename[] = "/Users/cebrail/Documents/Programmering/ReadFile/ReadFile/ECG.txt";
+static const char filename[] = "/Users/christiankiaer/Documents/Embedded Systems/AssignmentOne/ECG/ECG/ECG.txt";
 FILE *file;
 int next;
 
