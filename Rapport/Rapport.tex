@@ -114,5 +114,119 @@
 \usepackage{sectsty}
 \allsectionsfont{\scshape}
 \begin{document}
-SUP
+\begin{titlepage}
+\begin{center}
+\textsc{\LARGE Danmarks Tekniske Universitet}\\[1.5cm]
+\textsc{\large Embedded Systems 02131}\\[0.5cm]
+\HRule \\[0.4cm]
+{ \huge \bfseries Assignment 1}\\[0.1cm]
+\HRule \\[1.5cm]
+\end{center}
+\begin{flushleft} \large
+\emph{Gruppemedlemmer:}\\
+Cebrail \textsc{Erdogan} s113414\\
+Christian Mathias Rohde \textsc{Kiær} s123812\\
+Jonathan Binner \textsc{Becktor} s123094\\
+\end{flushleft}
+\vfill 
+\begin{center}
+{\large \today}
+\end{center}
+\end{titlepage}
+\newpage
+\section*{Introduktion}
+Vi har fået stillet til opgave at implementere Pan-Thompkins QRS detection algorithm. Algoritmens formål er at analysere et ECG signal og QRS komplekset. QRS komplekset giver det elektriske billede af ventriklernes sammentrækning. Et eksempel på et QRS kompleks ses på figur 1.\\
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{qrs.png}
+\caption{QRS Kompleks}
+\label{Figur 1: QRS}
+\end{figure}\\
+Vores mål med algoritmen er derfor at give en vurdering af R peaks i QRS komplekset. Dette vil kunne alamere patienter om eventuelle hjerteproblemer. Vores algoritme skal derfor kunne registrere følgende:
+\begin{itemize}
+\item Intensiteten af R-peaks.
+\item Varigheden af R-peaks.
+\item Tiden siden sidste R-peak.
+\item Advare hvis intensiteten af R-peaket er under en vis grænse eller hvis intervallet mellem R-peaks er ustabilt.
+\end{itemize}
+\newpage
+\tableofcontents
+\newpage
+\section{Kravspecifikationer}
+Vi vil her beskrive kravene for programmet, 
+\subsection{Funktioner}
+\subsubsection{Data erhvervelse}
+Vores program skal kunne simulere en ECG måling. Der skal derfor indlæses et datasæt, som representere data fra en rigtigt patient, i realtime for så nøjagtigt som muligt at simulere en ECG måling.  
+\subsubsection{Filtrering}
+Da algoritmen kræver at datapunkterne behandles med stor præcision, anvendes 5 forskellige algoritmer til at filtrere den data vi har fået. De forskellige algoritmer gør alle noget forskelligt og meget spesefikt for datapunkterne. Low-Pass filtrer som i navnet lader de lave frekvenser komme forbi og blokerer de alt for høje. Highpass gør det modsatte. Derivative forstærker de signaler vi er interesseret i. Square filtrer tildeles for at vise større forskel mellem datapunkterne og for at gøre alle datapunkterne positive. Tilsidst bruges Moving window implementation filtret for at gøre signalet mere "blødt" altså at fjerne ekstra støj for at fobredre visualiseringen af R-peaks. De 5 filtre skal anvendes i følgende orden:
+\begin{itemize}
+\item Low-pass filter
+\item High-pass filter
+\item Derivative
+\item Squaring
+\item Moving window integration
+\end{itemize}
+\subsection{Varierende del??}
+\subsection{Bruger output??}
+\section{Programdesign}
+\subsection*{Struktur}
+Vi har taget udgangspunkt i de udleverede program filer til senoren, og efterfølgende oprettet klasser for alle filtre og QRS-registrings delene af programmet. Vi har en main klasse der kører selve programmet, og derfra kalder de nødvændige funktioner.\\
+Filtrene er oprettet med navn, og funktionerne i det pågældende filter bliver derfra kaldt (eks. er low-pass filteret oprettet som lowPass.c). R-peak registrering forgår i QRS.c, hvorfra også udregningerne af intensiteten, varigheden og tiden siden sidste R-peak foregår.\\
+Opdelingen er sket på denne måde, da vi synes en klasse for hver filter gav mest overskuelighed. Det er meget let derfra at gå ind og rette på en enkelt del af et givent filter, uden det giver problemer i resten af programmet. At holde QRS funktionerne adskildt fra resten af programmet giver samme fordele. 
+\subsection{Data indlæsning}
+Da programmet skal forestille at være en simulation af en ECG måling, ved brug af Pan-Thompsons QRS detection algorithm, skal programmet kunne læse data fra en fil. Til dette har vi vidreudviklet på sensor.c filen, og implenteret funktionen getNextData(). Dette vil give os muligheden for at hente data fra en fil, og bruge dette datasæt til analyse af QRS detection algoritmen. Sensor.c bruges derefter i main.c og henter alle vores signal data ind til analysen.
+\subsection{Data analyse}
+Analyseringen af data sker, når hver 
+\subsection{Data output}
+\section{Implementering}
+\subsection{Filtre}
+De forskellige filtre er belvet implementeret i hver sin klasse. Her er en gennemngang af nogle af dem da nogle af dem er meget ens hvor det eneste der gør dem forskellige er den matematiske formel.
+
+\subsubsection{Low-Pass, High-pass, Derivative og Moving window implementation}
+Her initializeres 2 arrays en til resultaterne og en til dataen. Størrelsen af arrayet afhænger af hvor langt tilbage formlen siger vi skal have resultater fra. Fx. skal vi have $x_{n-12}$ i Low-Pass filtret, vi skal altså have et array der gemmer x værdierne til og med $x_{n-12}$. Det bliver gjort med en forløkke som sætter den positon næste lig den forrige.
+Hvorefter vi så returner resultatet. Derudover har vi også tilføjet en reset metode hvis man skal bruge filtrene igen. Den sætter bare alle positionerne i arraysne til nul.
+
+\subsubsection{Squared}
+Squared filtret ligger også i sin egen klasse. her får den input fra Derivative og returner inputtet ganget sig selv.
+
+\section{Resultater}
+
+\section{Diskussion}
+
+\section{Konklusion}
+\newpage
+\section{Bilag}
+\subsection{HelloWorld.c}
+\begin{verbatim}
+#include <stdio.h>
+
+int main(int argc, const char * argv[])
+{
+    printf("Hello, World!\n");
+    return 0;
+}
+\end{verbatim}
+\subsection{ReadFile.c}
+\begin{verbatim}
+#include <stdio.h>
+
+int main(int argc, const char * argv[])
+{
+    static const char filename[] = "/users/christiankiaer/Downloads/ECG.txt";
+    FILE *file = fopen ( filename, "r" );
+    
+    int maxReading;
+    int i1;
+    while (fscanf(file,"%i",&i1) != EOF)
+    {
+        if (i1 > maxReading)
+        {
+            maxReading = i1;
+        }
+    }
+    
+    printf("The highest EKG reading is: %i", maxReading);
+    return 0;
+}
+\end{verbatim}
 \end{document}
