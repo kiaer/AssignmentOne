@@ -6,8 +6,10 @@
 //  Copyright (c) 2013 Cebrail Erdogan. All rights reserved.
 //
 #include <stdlib.h>
-#include "sensor.h"
+#include <time.h>
+#include <unistd.h>
 #include <stdio.h>
+#include "sensor.h"
 #include "lowPass.h"
 #include "highPass.h"
 #include "derivative.h"
@@ -15,10 +17,12 @@
 #include "motionWI.h"
 #include "QRS.h"
 
+clock_t begin, end;
+double CPU_time_used;
 
 void reset(void)
 {
-    //Reset the variables if you gonna run them again
+    
     resetLowPass();
     resetHighPass();
     resetDerivative();
@@ -29,14 +33,21 @@ void reset(void)
 
 int main(int argc, const char * argv[])
 {
-   
+    
+    begin=clock();
     init();
-//    for (int i=0; i < 10000; i++) {
-//        printf("%i \n", motionWI() );
-//    }
     QRS();
-
+    end = clock();  
+    
+    CPU_time_used = (double)(end - begin) / CLOCKS_PER_SEC;
+    
+//    printf("LPF Elapsed time: %fs\n", time_spent_lpf );
+//    printf("HPF Elapsed time: %fs\n", time_spent_hpf);
+//    printf("DER Elapsed time: %fs\n", time_spent_der);
+//    printf("MWI Elapsed time: %fs\n", time_spent_mwi);
+    printf("Total runtime of program: %fs", CPU_time_used);
     return 0;
+    
 }
 
 

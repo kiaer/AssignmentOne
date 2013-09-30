@@ -12,16 +12,19 @@
 #include "highPass.h"
 #include "derivative.h"
 #include "squared.h"
+#include <time.h>
+#include <unistd.h>
+
 
 int motionXn[30];
 int motionX;
 int motionY;
-
-
-
+clock_t end, start;
+double time_spent_mwi;
 
 int motionWI() {
 
+//    start = clock();
     
     motionX = squared();
     
@@ -29,9 +32,6 @@ int motionWI() {
                + motionXn[8] + motionXn[9] + motionXn[10] + motionXn[11] + motionXn[12]+motionXn[13]+motionXn[14]+
                motionXn[15]+motionXn[16]+motionXn[17]+motionXn[18]+motionXn[19]+motionXn[20]+motionXn[21]+motionXn[22]+motionXn[23]
                +motionXn[24]+motionXn[25]+motionXn[26]+motionXn[27]+motionXn[28]+motionXn[29])/30;
-    
-    
-    
     
     for (int i = sizeof(motionXn) / sizeof(int) -1;  i >= 0 ; i--) {
         if (i > 0) {
@@ -42,7 +42,9 @@ int motionWI() {
         }
     }
     
-
+//    end = clock();
+//    time_spent_mwi += (double)(end - start) / CLOCKS_PER_SEC;
+    
     return motionY ;
     
     

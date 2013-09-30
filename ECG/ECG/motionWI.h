@@ -11,5 +11,6 @@
 
 int motionWI();
 int resetMotionWindow();
+double time_spent_mwi;
 
 #endif

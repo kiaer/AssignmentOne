@@ -11,5 +11,6 @@
 
 int derivative();
 void resetDerivative();
+double time_spent_der;
 
 #endif

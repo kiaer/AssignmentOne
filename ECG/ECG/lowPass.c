@@ -9,12 +9,18 @@
 #include <stdlib.h>
 #include "sensor.h"
 #include <stdio.h>
+#include <time.h>
+#include <unistd.h>
 
 int LPYn[2];
 int LPXn[12];
 int x, y;
+clock_t end, start;
+double time_spent_lpf;
 
 int lowPass(){
+    
+//    start = clock();
     
     x = getNextData();
 
@@ -35,6 +41,9 @@ int lowPass(){
     LPXn[2] = LPXn[1];
     LPXn[1] = LPXn[0];
     LPXn[0] = x;
+    
+//    end = clock();
+//    time_spent_lpf += (double)(end - start) / CLOCKS_PER_SEC;
     
     return y;
 }

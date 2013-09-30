@@ -8,17 +8,17 @@
 #include <stdlib.h>
 #include "sensor.h"
 #include <stdio.h>
+#include <time.h>
 #include "motionWI.h"
 
 
 
-    int RR_PEAKS[8];
     double SPKF = 0;
     double NPKF = 0;
     int THRESHOLD1;
     int THRESHOLD2;
-    int RR_AVERAGE1;
-    int RR_AVERAGE2;
+    double RR_AVERAGE1;
+    double RR_AVERAGE2;
     int RR_LOW;
     int RR_HIGH;
     int RR_MISS;
@@ -36,7 +36,10 @@
     int inter;
     int counter;
     int missCount = 0;
-int start = 0;
+    int start = 0;
+    int documentLength = 10800000;
+    clock_t begin, end;
+    double time_spent_psb;  
 
 
 
@@ -79,6 +82,7 @@ void UpdateRR_AVERAGE2() {
 
 
 void PeakSearchBack() {
+    begin = clock();
 	int k, i, j;
 	for (k = 1; k < 30; k++) {
 		if (PEAKS[k].value > THRESHOLD2) {
@@ -89,6 +93,8 @@ void PeakSearchBack() {
 			for (j = k; j > -1; j--) {
 				PEAKS[j].RR = PEAKS[j].index - RPEAKS[0].index;
 			}
+            end = clock();
+            time_spent_psb += (double)(end - begin) / CLOCKS_PER_SEC;
 			return;
 		}
 	}
@@ -101,7 +107,7 @@ void PeakSearchBack() {
 
 int QRS(){
     
-    for(int index = 1; index <= 10000; index++){
+    for(int index = 1; index <= documentLength; index++){
        
         //Find a peak
         /* define
@@ -141,7 +147,12 @@ int QRS(){
                     missCount++;
                     if(missCount == 5)
                     {
-                        printf("5 successive RR-intervals has missed the RR_LOW and RR_HIGH \n");
+//                        printf("\n-----5 successive RR-intervals has missed the RR_LOW and RR_HIGH------ \n");
+//                        printf("\n");
+//                        printf("I might have a slight issue with my heart %.3f seconds \n",
+//                               (float) RPEAKS[0].index / 250);
+//                        printf("---------------------------------------------------------------------\n");
+
                     }
                 }
 
@@ -150,15 +161,20 @@ int QRS(){
                 
                 
                     if (  (PEAKS[0].RR > RR_LOW) && (PEAKS[0].RR < RR_HIGH)     ){
-                       
+                        missCount = 0;
                         for (int i = 29; i > 0; i--) {
                             RPEAKS[i] = RPEAKS[i - 1];
                         }
                         RPEAKS[0] = PEAKS[0];
-                      
-                        printf("%d  \n", RPEAKS[0].value);
+//                        printf("\nLatest R-Peak: %d\n", RPEAKS[0].value);
+//                        printf("The R-Peak was found after %.3f seconds \n",
+//                               (float) RPEAKS[0].index / 250);
+//                        printf("user has pulse of %.3f\n", (250/RR_AVERAGE1)*60);
+              
+        
+                        //printf("%d  \n", RPEAKS[0].value);
                         if(RPEAKS[0].value < 2000){
-                            printf("Rpeak value less than 2000!");
+                           // printf("Rpeak value less than 2000!");
                         }
                         SPKF = 0.125* RPEAKS[0].value +0.875*SPKF;
                     
@@ -188,7 +204,7 @@ int QRS(){
                         //SearchBackwards through PEAKS and return peak2
                         PeakSearchBack();
                        
-                        printf("%d  \n", RPEAKS[0].value );
+                        //printf("%d  \n", RPEAKS[0].value );
                         if(RPEAKS[0].value < 2000){
                             printf("Rpeak value less than 2000!");
                         }

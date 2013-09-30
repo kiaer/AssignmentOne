@@ -10,14 +10,18 @@
 #include "sensor.h"
 #include "lowPass.h"
 #include "highPass.h"
-
+#include <time.h>
+#include <unistd.h>
 
 int derYn;
 int derXn[4];
 int derX;
+clock_t end, start;
+double time_spent_der;
 
 int derivative(){
     
+//    start = clock();
     derX = highPass();
     
     derYn = ( 2 * derX + derXn[0] - derXn[2] - 2 * derXn[3]) / 8;
@@ -26,8 +30,11 @@ int derivative(){
     derXn[2] = derXn[1];
     derXn[1] = derXn[0];
     derXn[0] = derX;
-    
+//    end = clock();
+//    time_spent_der += (double)(end - start) / CLOCKS_PER_SEC;
     return derYn;
+    
+    
 }
 
 void resetDerivative(){
