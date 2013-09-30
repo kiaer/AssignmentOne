@@ -10,6 +10,11 @@ void init(){
     file =  fopen ( filename, "r" );
 }
 
+void close(){
+    fclose(file);
+    
+}
+
 
 int getNextData(){
     

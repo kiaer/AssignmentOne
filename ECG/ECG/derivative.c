@@ -29,3 +29,12 @@ int derivative(){
     
     return derYn;
 }
+
+void resetDerivative(){
+    for (int i = 0; i < sizeof(derXn); i++) {
+        derXn[i] = 0;
+    }
+    derYn = 0;
+    derX = 0;
+    
+}

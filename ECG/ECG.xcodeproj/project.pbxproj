@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		DC0DA65C17E07DDC0085DACD /* ECG.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC0DA65B17E07DDC0085DACD /* ECG.1 */; };
-		DC5C023317E9B6220085992B /* searchPeaks.c in Sources */ = {isa = PBXBuildFile; fileRef = DC5C023217E9B6220085992B /* searchPeaks.c */; };
 		DC79999817E46F3C008C313A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = DC0DA66D17E08F290085DACD /* main.c */; };
 		DC79999B17E470CA008C313A /* sensor.c in Sources */ = {isa = PBXBuildFile; fileRef = DC0DA66617E07E9E0085DACD /* sensor.c */; };
 		DC79999F17E472B0008C313A /* highPass.c in Sources */ = {isa = PBXBuildFile; fileRef = DC79999C17E47191008C313A /* highPass.c */; };
@@ -16,6 +15,7 @@
 		DC7999A417E4A256008C313A /* derivative.c in Sources */ = {isa = PBXBuildFile; fileRef = DC7999A317E4A256008C313A /* derivative.c */; };
 		DC7999A917E4BD0B008C313A /* squared.c in Sources */ = {isa = PBXBuildFile; fileRef = DC7999A817E4BD0B008C313A /* squared.c */; };
 		DC7999AC17E4BEC8008C313A /* motionWI.c in Sources */ = {isa = PBXBuildFile; fileRef = DC7999AB17E4BEC8008C313A /* motionWI.c */; };
+		DCBDA6A417F4AFEF006FC63A /* QRS.c in Sources */ = {isa = PBXBuildFile; fileRef = DCBDA6A317F4AFEF006FC63A /* QRS.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,18 +32,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4E0A1FD717F31683003B25C5 /* sensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sensor.h; sourceTree = "<group>"; };
 		DC0DA65617E07DDC0085DACD /* ECG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ECG; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0DA65B17E07DDC0085DACD /* ECG.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ECG.1; sourceTree = "<group>"; };
 		DC0DA66217E07DE90085DACD /* ECG.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ECG.txt; sourceTree = "<group>"; };
+		DC0DA66517E07E8F0085DACD /* sensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sensor.h; path = ../sensor.h; sourceTree = "<group>"; };
 		DC0DA66617E07E9E0085DACD /* sensor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sensor.c; sourceTree = "<group>"; };
 		DC0DA66917E0857A0085DACD /* ECGIndex.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ECGIndex.txt; sourceTree = "<group>"; };
 		DC0DA66D17E08F290085DACD /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		DC0DA67117E096F10085DACD /* lowPass.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lowPass.c; sourceTree = "<group>"; };
 		DC18461717E5D7F1009DC857 /* motionWI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = motionWI.h; sourceTree = "<group>"; };
 		DC5C023117E9A4770085992B /* x_mwi_div_after.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = x_mwi_div_after.txt; sourceTree = "<group>"; };
-		DC5C023217E9B6220085992B /* searchPeaks.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = searchPeaks.c; sourceTree = "<group>"; };
-		DC5C023417E9B8CA0085992B /* searchPeaks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = searchPeaks.h; sourceTree = "<group>"; };
+		DC5C023417E9B8CA0085992B /* QRS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRS.h; sourceTree = "<group>"; };
 		DC79999717E46EEF008C313A /* lowPass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lowPass.h; sourceTree = "<group>"; };
 		DC79999C17E47191008C313A /* highPass.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = highPass.c; sourceTree = "<group>"; };
 		DC79999E17E47296008C313A /* highPass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = highPass.h; sourceTree = "<group>"; };
@@ -56,6 +55,8 @@
 		DC7999A817E4BD0B008C313A /* squared.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = squared.c; sourceTree = "<group>"; };
 		DC7999AA17E4BDA3008C313A /* squared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = squared.h; sourceTree = "<group>"; };
 		DC7999AB17E4BEC8008C313A /* motionWI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = motionWI.c; sourceTree = "<group>"; };
+		DCB9283E17F6FC5B00C9C417 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		DCBDA6A317F4AFEF006FC63A /* QRS.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = QRS.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,18 +92,19 @@
 				DC0DA66D17E08F290085DACD /* main.c */,
 				DC18461717E5D7F1009DC857 /* motionWI.h */,
 				DC7999AB17E4BEC8008C313A /* motionWI.c */,
+				DCBDA6A317F4AFEF006FC63A /* QRS.c */,
 				DC7999AA17E4BDA3008C313A /* squared.h */,
 				DC7999A817E4BD0B008C313A /* squared.c */,
 				DC7999A517E4A3FB008C313A /* derivative.h */,
+				DCB9283E17F6FC5B00C9C417 /* main.h */,
 				DC0DA67117E096F10085DACD /* lowPass.c */,
-				DC5C023217E9B6220085992B /* searchPeaks.c */,
-				DC5C023417E9B8CA0085992B /* searchPeaks.h */,
+				DC5C023417E9B8CA0085992B /* QRS.h */,
 				DC7999A317E4A256008C313A /* derivative.c */,
 				DC79999C17E47191008C313A /* highPass.c */,
 				DC79999E17E47296008C313A /* highPass.h */,
 				DC79999717E46EEF008C313A /* lowPass.h */,
 				DC0DA66917E0857A0085DACD /* ECGIndex.txt */,
-				4E0A1FD717F31683003B25C5 /* sensor.h */,
+				DC0DA66517E07E8F0085DACD /* sensor.h */,
 				DC0DA66617E07E9E0085DACD /* sensor.c */,
 				DC0DA66217E07DE90085DACD /* ECG.txt */,
 				DC0DA65B17E07DDC0085DACD /* ECG.1 */,
@@ -166,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCBDA6A417F4AFEF006FC63A /* QRS.c in Sources */,
 				DC79999817E46F3C008C313A /* main.c in Sources */,
 				DC79999B17E470CA008C313A /* sensor.c in Sources */,
 				DC79999F17E472B0008C313A /* highPass.c in Sources */,
@@ -173,7 +176,6 @@
 				DC7999A417E4A256008C313A /* derivative.c in Sources */,
 				DC7999A917E4BD0B008C313A /* squared.c in Sources */,
 				DC7999AC17E4BEC8008C313A /* motionWI.c in Sources */,
-				DC5C023317E9B6220085992B /* searchPeaks.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

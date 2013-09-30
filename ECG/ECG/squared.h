@@ -10,5 +10,7 @@
 #define ECG_squared_h
 
 int squared();
+void resetSquared();
+
 
 #endif

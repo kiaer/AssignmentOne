@@ -1,1 +1,2 @@
 int lowPass();
+void resetLowPass();

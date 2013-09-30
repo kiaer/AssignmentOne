@@ -8,11 +8,13 @@
 
 #include <stdio.h>
 #include "squared.h"
-
+#include "lowPass.h"
+#include "highPass.h"
+#include "derivative.h"
+#include "squared.h"
 
 int motionXn[30];
 int motionX;
-int motionXss;
 int motionY;
 
 
@@ -23,46 +25,37 @@ int motionWI() {
     
     motionX = squared();
     
-    motionY = ( motionX + motionXn[0] + motionXn[1] + motionXn[2] + motionXn[3] + motionXn[4] + motionXn[5] + motionXn[6] + motionXn[7]
+    motionY = (  motionXn[0] + motionXn[1] + motionXn[2] + motionXn[3] + motionXn[4] + motionXn[5] + motionXn[6] + motionXn[7]
                + motionXn[8] + motionXn[9] + motionXn[10] + motionXn[11] + motionXn[12]+motionXn[13]+motionXn[14]+
                motionXn[15]+motionXn[16]+motionXn[17]+motionXn[18]+motionXn[19]+motionXn[20]+motionXn[21]+motionXn[22]+motionXn[23]
                +motionXn[24]+motionXn[25]+motionXn[26]+motionXn[27]+motionXn[28]+motionXn[29])/30;
     
     
     
-    motionXn[29] = motionXn[28];
-    motionXn[28] = motionXn[27];
-    motionXn[27] = motionXn[26];
-    motionXn[26] = motionXn[25];
-    motionXn[25] = motionXn[24];
-    motionXn[24] = motionXn[23];
-    motionXn[23] = motionXn[22];
-    motionXn[22] = motionXn[21];
-    motionXn[21] = motionXn[20];
-    motionXn[20] = motionXn[19];
-    motionXn[19] = motionXn[18];
-    motionXn[18] = motionXn[17];
-    motionXn[17] = motionXn[16];
-    motionXn[16] = motionXn[15];
-    motionXn[15] = motionXn[14];
-    motionXn[14] = motionXn[13];
-    motionXn[13] = motionXn[12];
-    motionXn[12] = motionXn[11];
-    motionXn[11] = motionXn[10];
-    motionXn[10] = motionXn[9];
-    motionXn[9] = motionXn[8];
-    motionXn[8] = motionXn[7];
-    motionXn[7] = motionXn[6];
-    motionXn[6] = motionXn[5];
-    motionXn[5] = motionXn[4];
-    motionXn[4] = motionXn[3];
-    motionXn[3] = motionXn[2];
-    motionXn[2] = motionXn[1];
-    motionXn[1] = motionXn[0];
-    motionXn[0] = motionX;
     
+    for (int i = sizeof(motionXn) / sizeof(int) -1;  i >= 0 ; i--) {
+        if (i > 0) {
+            motionXn[i] = motionXn[i-1];
+        }
+        else{
+            motionXn[0] = motionX;
+        }
+    }
     
+
     return motionY ;
     
     
 }
+void resetMotionWindow(){
+    for (int i=0; i < sizeof(motionXn); i++) {
+        motionXn[i] = 0;
+    }
+    motionY = 0;
+    motionX = 0;
+}
+
+
+
+
+
